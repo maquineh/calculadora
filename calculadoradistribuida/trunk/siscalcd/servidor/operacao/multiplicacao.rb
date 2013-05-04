@@ -1,20 +1,12 @@
 require 'drb'
 class Multiplicacao
-  def multiplicar
-    mult=1
-    loop do
-      puts"Digite um numero ou 0 para terminar"
-      STDOUT.flush
-      n=gets.chomp.to_i
-      if n== 0 
-        return mult
-      else mult=mult*n
-     end 
-    end
+  def multiplicar(v1,v2)
+    puts "Multiplicacao ->\s\sResultado de:  #{v1} * #{v2} = #{v1*v2}"
+    return v1*v2
   end
 end
 DRb.start_service 'druby://localhost:8898', Multiplicacao.new
- puts "Servidor rodando em...: #{DRb.uri}"
+ puts "Servidor de Multiplicacao rodando em...: #{DRb.uri}"
  
  trap("INT") { DRb.stop_service }
  DRb.thread.join
