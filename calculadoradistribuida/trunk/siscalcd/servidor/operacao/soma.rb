@@ -1,18 +1,14 @@
 require 'drb'
 class Soma
-    def somar
-      valor  = 0
-      loop do
-        puts"Digite um numero ou 0 para terminar"
-        STDOUT.flush
-        n=gets.chomp.to_i
-        valor = valor +n
-      return valor if n == 0
-    end
+    def somar(v1,v2)
+    valor = v1+v2
+    puts "Adicao ->\s\sResultado de:  #{v1} + #{v2} = #{valor}"
+    return valor
+    
   end
 end
 DRb.start_service 'druby://localhost:8899', Soma.new
- puts "Servidor rodando em...: #{DRb.uri}"
+ puts "Servidor de Adicao rodando em...: #{DRb.uri}"
  
  trap("INT") { DRb.stop_service }
  DRb.thread.join
