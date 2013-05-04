@@ -1,5 +1,5 @@
 require 'drb'
-require 'rpnexpression.rb' #lib para corrigir um expressão numerica no formato rpn
+require_relative 'rpnexpression.rb' #lib para corrigir um expressão numerica no formato rpn
 class Array
     alias :peek :last
 end
